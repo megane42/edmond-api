@@ -4,5 +4,5 @@ const functions = require('firebase-functions')
 const add_isbn  = require('./add_isbn')
 
 module.exports = {
-  'add_isbn' : functions.https.onRequest(add_isbn),
+  'add_isbn' : functions.region('asia-northeast1').https.onRequest(add_isbn),
 }
