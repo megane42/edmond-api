@@ -4,6 +4,7 @@ const {
 
 const express = require('express');
 const cors    = require('cors');
+const isbn    = require('node-isbn');
 
 // inits
 
@@ -13,12 +14,12 @@ app.use(cors({ origin: true }));
 // actions
 
 const add_book = (req, res) => {
-  return firestore.collection('books').add({
-    isbn: req.params.isbn
+  return isbn.resolve(req.params.isbn).then((book) => {
+    return firestore.collection('books').add(book)
   }).then(() => {
-    return res.status(200).send('{"status":"ok"}')
+    return res.status(200).send({status: "ok"})
   }).catch(() => {
-    return res.status(500).send('{"status":"ng"}')
+    return res.status(500).send({status: "ng"})
   })
 }
 
