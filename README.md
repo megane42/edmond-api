@@ -2,12 +2,16 @@
 
 ## develop
 
-* (`npm install -g yarn`)
-* `yarn`
 * `cd functions`
 * `yarn`
+* `yarn run firebase login`
+
+## check on local
+
+* `cd functions`
+* `yarn run serve`
 
 ## deploy
 
-* (`yarn run firebase login`)
-* `yarn run firebase deploy --only functions`
+* `cd functions`
+* `yarn run deploy`
